@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList,  IonItem, IonSkeletonText, IonAvatar, IonAlert, IonLabel, DatePipe, RouterModule, IonBadge,  IonInfiniteScroll, IonInfiniteScrollContent],
 })
 export class HomePage {
-  private moviesService = inject(MovieService);
+  private movieService = inject(MovieService);
   private currentPage = 1;
   public error = null;
   public isLoading = false;
@@ -44,7 +44,7 @@ export class HomePage {
       this.isLoading = true;
     }
 
-    this.moviesService.getTopRatedMovies(this.currentPage)
+    this.movieService.getTopRatedMovies(this.currentPage)
     .pipe(
       finalize(() => {
         this.isLoading = false;
@@ -72,6 +72,7 @@ export class HomePage {
   }
 
   loadMore(event:InfiniteScrollCustomEvent){
-
+    this.currentPage++;
+    this.loadMovies(event);
   }
 }
