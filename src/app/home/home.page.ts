@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, InfiniteScrollCustomEvent, IonList, IonItem, IonSkeletonText, IonAvatar, IonAlert, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, InfiniteScrollCustomEvent, IonList, IonItem, IonSkeletonText, IonAvatar, IonAlert, IonLabel, IonBadge, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie.service';
 import { catchError, finalize } from 'rxjs';
 import { MovieResult } from '../services/interfaces';
 import { DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList,  IonItem, IonSkeletonText, IonAvatar, IonAlert, IonLabel, DatePipe],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList,  IonItem, IonSkeletonText, IonAvatar, IonAlert, IonLabel, DatePipe, RouterModule, IonBadge,  IonInfiniteScroll, IonInfiniteScrollContent],
 })
 export class HomePage {
   private moviesService = inject(MovieService);
