@@ -20,7 +20,7 @@ export class MovieService {
 
   getTopRatedMovies(page = 1):Observable<ApiResult>{
     return this.http.get<ApiResult>(`${BASE_URL}/movie/popular?page=${page}&api_key=${API_KEY}`)
-    // .pipe(delay(5000));
+    .pipe(delay(5000));
   }
 
   getMovieDetails(id: string):Observable<MovieResult>{
