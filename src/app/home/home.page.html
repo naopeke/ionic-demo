@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- If it is loading, it shows a list of six Ionic skeleton items -->
   @if (isLoading) {
     <ion-list>
       @for (i of dummyArray; track i) {
@@ -18,10 +19,13 @@
         </ion-item>
       }
     </ion-list>
+
+    <!-- If we have an error, it shows an Ionic inline alert with the error message -->
   } @else if (error){
     <ion-alert header="Error" [message]="error" isOpen="true" [buttons]="['Ok']" />
   }
 
+  <!-- When we have an array, we show a list of movies -->
   <ion-list>
     @for (item of movies; track item.id) {
       <ion-item button [routerLink]="['/details', item.id]">
@@ -36,6 +40,8 @@
 
         <ion-badge slot="end"> {{ item.vote_average }}</ion-badge>
       </ion-item>
+
+      <!-- When the array is empty and we finished loading, it shows a message that no movies were found. -->
     } @empty {
       @if (!isLoading){
         <ion-item lines="none">
